@@ -16,3 +16,6 @@ mono_crash.*.json
 
 # Kenney ignores
 build/
+
+# Michiel ignores
+*.import
