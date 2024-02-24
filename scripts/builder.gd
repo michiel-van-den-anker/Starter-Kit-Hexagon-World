@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var structures: Array[Structure] = []
+@export var hexagons: Array[Hexagon] = []
 
 var map:DataMap
 
@@ -24,12 +24,12 @@ func _ready():
 	
 	var mesh_library = MeshLibrary.new()
 	
-	for structure in structures:
+	for hexagon in hexagons:
 		
 		var id = mesh_library.get_last_unused_item_id()
 		
 		mesh_library.create_item(id)
-		mesh_library.set_item_mesh(id, get_mesh(structure.model))
+		mesh_library.set_item_mesh(id, get_mesh(hexagon.model))
 		mesh_library.set_item_mesh_transform(id, Transform3D())
 		
 	gridmap.mesh_library = mesh_library
@@ -81,7 +81,7 @@ func action_build(gridmap_position):
 		gridmap.set_cell_item(gridmap_position, index, gridmap.get_orthogonal_index_from_basis(selector.basis))
 		
 		if previous_tile != index:
-			map.cash -= structures[index].price
+			map.cash -= hexagons[index].price
 			update_cash()
 
 # Demolish (remove) a structure
@@ -100,10 +100,10 @@ func action_rotate():
 
 func action_structure_toggle():
 	if Input.is_action_just_pressed("structure_next"):
-		index = wrap(index + 1, 0, structures.size())
+		index = wrap(index + 1, 0, hexagons.size())
 	
 	if Input.is_action_just_pressed("structure_previous"):
-		index = wrap(index - 1, 0, structures.size())
+		index = wrap(index - 1, 0, hexagons.size())
 
 	update_structure()
 
@@ -115,7 +115,7 @@ func update_structure():
 		selector_container.remove_child(n)
 		
 	# Create new structure preview in selector
-	var _model = structures[index].model.instantiate()
+	var _model = hexagons[index].model.instantiate()
 	selector_container.add_child(_model)
 	_model.position.y += 0.25
 	
