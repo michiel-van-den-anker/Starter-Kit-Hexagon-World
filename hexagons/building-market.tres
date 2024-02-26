@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://jy5fmdv4ckie0"]
+
+[ext_resource type="PackedScene" uid="uid://6usmdgfxnb71" path="res://models/Hexagons/building-market.glb" id="1_4qpon"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_4qpon")
+price = 0

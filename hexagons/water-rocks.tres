@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://c1gvq5eghnhxg"]
+
+[ext_resource type="PackedScene" uid="uid://b4tpjwa3wugm2" path="res://models/Hexagons/water-rocks.glb" id="1_gmuag"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_gmuag")
+price = 0

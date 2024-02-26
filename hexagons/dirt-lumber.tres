@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://cj2kklsb7w2mk"]
+
+[ext_resource type="PackedScene" uid="uid://bsw5gidwlw1hi" path="res://models/Hexagons/dirt-lumber.glb" id="1_s5e4k"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_s5e4k")
+price = 0

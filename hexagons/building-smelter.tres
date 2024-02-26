@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://dn0tuihy936h0"]
+
+[ext_resource type="PackedScene" uid="uid://c0cwxee630fxd" path="res://models/Hexagons/building-smelter.glb" id="1_01p8t"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_01p8t")
+price = 0

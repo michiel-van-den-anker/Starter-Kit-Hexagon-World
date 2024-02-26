@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://ccy0q2hhnheyo"]
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://bx6ix7pyq83uv"]
 
 [ext_resource type="PackedScene" uid="uid://dupelw6gncajn" path="res://models/Hexagons/bridge.glb" id="1_f0pae"]
 [ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]

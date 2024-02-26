@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://qs4gyo5d5qzpz"]
+
+[ext_resource type="PackedScene" uid="uid://b5dx3xff51iny" path="res://models/Hexagons/path-intersectionB.glb" id="1_v2hwh"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_v2hwh")
+price = 0

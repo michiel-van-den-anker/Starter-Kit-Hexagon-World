@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://83cb7fps26uk0"]
+
+[ext_resource type="PackedScene" uid="uid://cdwad8y1flpp3" path="res://models/Hexagons/building-walls.glb" id="1_pt7nx"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_pt7nx")
+price = 0

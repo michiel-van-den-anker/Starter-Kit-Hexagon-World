@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://hca6eafkq46b"]
+
+[ext_resource type="PackedScene" uid="uid://bcpjn8i7nstrb" path="res://models/Hexagons/building-archery.glb" id="1_18lnj"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_18lnj")
+price = 0

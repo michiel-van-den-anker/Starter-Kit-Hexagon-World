@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://ajmo5fzthoi8j"]
+
+[ext_resource type="PackedScene" uid="uid://o1qgp6qfu8fo" path="res://models/Hexagons/unit-ship-large.glb" id="1_ae4my"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_ae4my")
+price = 0

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://2qv9gprn36ym8"]
+
+[ext_resource type="PackedScene" uid="uid://muvbglxc21hh" path="res://models/Hexagons/river-intersectionF.glb" id="1_hivvi"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_hivvi")
+price = 0

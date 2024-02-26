@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://b7xd92ulgsx6a"]
+
+[ext_resource type="PackedScene" uid="uid://dtejweivxo08a" path="res://models/Hexagons/river-straight.glb" id="1_ci482"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_ci482")
+price = 0

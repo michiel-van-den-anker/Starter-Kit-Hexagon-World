@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://y9bue0bdun7tu"]
+
+[ext_resource type="PackedScene" uid="uid://b3i7chg70ukej" path="res://models/Hexagons/river-start.glb" id="1_gapo4"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_gapo4")
+price = 0

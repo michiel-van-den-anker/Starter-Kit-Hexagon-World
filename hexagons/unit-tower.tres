@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://xmxk1cl0tjefx"]
+
+[ext_resource type="PackedScene" uid="uid://k24nmn13a222" path="res://models/Hexagons/unit-tower.glb" id="1_exoye"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_exoye")
+price = 0

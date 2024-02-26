@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hexagon" load_steps=3 format=3 uid="uid://e35l8zrn3dxc7"]
+
+[ext_resource type="PackedScene" uid="uid://boepokbtyix7m" path="res://models/Hexagons/path-corner.glb" id="1_3di01"]
+[ext_resource type="Script" path="res://scripts/hexagon.gd" id="2_ijcnx"]
+
+[resource]
+script = ExtResource("2_ijcnx")
+model = ExtResource("1_3di01")
+price = 0
