@@ -11,6 +11,7 @@ var index:int = 0 # Index of structure being built
 @export var view_camera:Camera3D # Used for raycasting mouse
 @export var gridmap:GridMap
 @export var cash_display:Label
+@export var debug_text:Label
 
 var plane:Plane # Used for raycasting mouse
 
@@ -118,6 +119,8 @@ func update_structure():
 	var _model = hexagons[index].model.instantiate()
 	selector_container.add_child(_model)
 	_model.position.y += 0.25
+	
+	debug_text.text = "Hexagon: " + str(index) + " " + _model.name
 	
 func update_cash():
 	cash_display.text = "$" + str(map.cash)
