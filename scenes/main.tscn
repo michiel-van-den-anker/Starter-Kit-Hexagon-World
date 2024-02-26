@@ -1,12 +1,83 @@
-[gd_scene load_steps=9 format=3 uid="uid://vgwrcfy1qawf"]
+[gd_scene load_steps=80 format=3 uid="uid://vgwrcfy1qawf"]
 
 [ext_resource type="Script" path="res://scripts/builder.gd" id="1_jybm7"]
 [ext_resource type="Environment" uid="uid://jbptgqvstei3" path="res://scenes/main-environment.tres" id="1_yndf3"]
-[ext_resource type="Resource" uid="uid://ccy0q2hhnheyo" path="res://hexagons/bridge.tres" id="2_vpugm"]
+[ext_resource type="Resource" uid="uid://bx6ix7pyq83uv" path="res://hexagons/bridge.tres" id="2_3m4xx"]
+[ext_resource type="Resource" uid="uid://hca6eafkq46b" path="res://hexagons/building-archery.tres" id="3_msq0m"]
+[ext_resource type="Resource" uid="uid://dardws3ldgqx1" path="res://hexagons/building-cabin.tres" id="4_gyy8y"]
 [ext_resource type="Texture2D" uid="uid://cbk07cxgshg26" path="res://sprites/selector.png" id="4_wr1wv"]
+[ext_resource type="Resource" uid="uid://bsjvacggkr5x3" path="res://hexagons/building-castle.tres" id="5_nhtrm"]
+[ext_resource type="Resource" uid="uid://db1cw08b33ite" path="res://hexagons/building-dock.tres" id="6_s8ib6"]
+[ext_resource type="Resource" uid="uid://bt5bdx30uo2hp" path="res://hexagons/building-farm.tres" id="7_pmi1m"]
+[ext_resource type="Resource" uid="uid://d0u36sedruqmo" path="res://hexagons/building-house.tres" id="8_xgkqv"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="8_yovpv"]
+[ext_resource type="Resource" uid="uid://cacof82l65qvh" path="res://hexagons/building-market.tres" id="9_ixuef"]
+[ext_resource type="Resource" uid="uid://0iyfgdxpac37" path="res://hexagons/building-mill.tres" id="10_k2tcn"]
+[ext_resource type="Resource" uid="uid://rc7hy10wgrq0" path="res://hexagons/building-mine.tres" id="11_suvwl"]
+[ext_resource type="Resource" uid="uid://c5bme18icqsb5" path="res://hexagons/building-port.tres" id="12_2ebk7"]
+[ext_resource type="Resource" uid="uid://dpv5y52iyqvto" path="res://hexagons/building-sheep.tres" id="13_ij0be"]
+[ext_resource type="Resource" uid="uid://dn0tuih0a36h0" path="res://hexagons/building-smelter.tres" id="14_ptuy6"]
+[ext_resource type="Resource" uid="uid://bpx5t65kh361u" path="res://hexagons/building-tower.tres" id="15_cxari"]
+[ext_resource type="Resource" uid="uid://3l6h8x48axya" path="res://hexagons/building-village.tres" id="16_5vnb2"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="16_vlub6"]
 [ext_resource type="Texture2D" uid="uid://bng0d1sou7c8a" path="res://sprites/coin.png" id="17_cjamx"]
+[ext_resource type="Resource" uid="uid://dkgdihcpw7ius" path="res://hexagons/building-wall.tres" id="17_lb3th"]
+[ext_resource type="Resource" uid="uid://c52dhydskkuiv" path="res://hexagons/building-walls.tres" id="18_4fn8h"]
+[ext_resource type="Resource" uid="uid://bd32ed8eyal7" path="res://hexagons/building-watermill.tres" id="19_bnq86"]
+[ext_resource type="Resource" uid="uid://dlmd23f3bbawe" path="res://hexagons/building-wizard-tower.tres" id="20_lpo1t"]
+[ext_resource type="Resource" uid="uid://cj2kklsb7w2mk" path="res://hexagons/dirt-lumber.tres" id="21_iq6gm"]
+[ext_resource type="Resource" uid="uid://opyse3e2mdq8" path="res://hexagons/dirt.tres" id="22_pf811"]
+[ext_resource type="Resource" uid="uid://di6skcgnpbc3o" path="res://hexagons/grass-forest.tres" id="23_1dsdf"]
+[ext_resource type="Resource" uid="uid://dosn24n05jx24" path="res://hexagons/grass-hill.tres" id="24_cdtjd"]
+[ext_resource type="Resource" uid="uid://dfv6oqmpiy3qv" path="res://hexagons/grass.tres" id="25_spsks"]
+[ext_resource type="Resource" uid="uid://0f77to5gvba2" path="res://hexagons/path-corner-sharp.tres" id="26_yxpg1"]
+[ext_resource type="Resource" uid="uid://8qqnxufi52lg" path="res://hexagons/path-corner.tres" id="27_3hxdp"]
+[ext_resource type="Resource" uid="uid://dri3jtr5nger" path="res://hexagons/path-crossing.tres" id="28_gg4bj"]
+[ext_resource type="Resource" uid="uid://b5sbb2ggy80vd" path="res://hexagons/path-end.tres" id="29_ivkrg"]
+[ext_resource type="Resource" uid="uid://dkpgsb5ttur50" path="res://hexagons/path-intersectionA.tres" id="30_milmr"]
+[ext_resource type="Resource" uid="uid://bdhymhhdvxiox" path="res://hexagons/path-intersectionB.tres" id="31_6m0sm"]
+[ext_resource type="Resource" uid="uid://cogct602ttj74" path="res://hexagons/path-intersectionC.tres" id="32_3ufr6"]
+[ext_resource type="Resource" uid="uid://c38mxac4bi1di" path="res://hexagons/path-intersectionD.tres" id="33_mjsu7"]
+[ext_resource type="Resource" uid="uid://dmk1o0lodjoog" path="res://hexagons/path-intersectionE.tres" id="34_t7ujs"]
+[ext_resource type="Resource" uid="uid://dvtjxbpadun7b" path="res://hexagons/path-intersectionF.tres" id="35_7qbbj"]
+[ext_resource type="Resource" uid="uid://by70cb7f33q1y" path="res://hexagons/path-intersectionG.tres" id="36_srdni"]
+[ext_resource type="Resource" uid="uid://cld4gu5f733d" path="res://hexagons/path-intersectionH.tres" id="37_b18wa"]
+[ext_resource type="Resource" uid="uid://dtw7bodhjvryy" path="res://hexagons/path-square-end.tres" id="38_gyw2a"]
+[ext_resource type="Resource" uid="uid://tr615noq6snr" path="res://hexagons/path-square.tres" id="39_jtrlo"]
+[ext_resource type="Resource" uid="uid://dlimqocm5igjv" path="res://hexagons/path-start.tres" id="40_ivhfi"]
+[ext_resource type="Resource" uid="uid://ckgrbcwfe8l18" path="res://hexagons/path-straight.tres" id="41_7nddh"]
+[ext_resource type="Resource" uid="uid://cvk7713jxy83v" path="res://hexagons/river-corner-sharp.tres" id="42_ew4qa"]
+[ext_resource type="Resource" uid="uid://cqfl3a26vs04c" path="res://hexagons/river-corner.tres" id="43_3a2u5"]
+[ext_resource type="Resource" uid="uid://bwssdocxaxm2b" path="res://hexagons/river-crossing.tres" id="44_typ5n"]
+[ext_resource type="Resource" uid="uid://cc25i2gnu00q3" path="res://hexagons/river-end.tres" id="45_lck8o"]
+[ext_resource type="Resource" uid="uid://o0cmyirql35v" path="res://hexagons/river-intersectionA.tres" id="46_qcvyf"]
+[ext_resource type="Resource" uid="uid://ctf1dw3wsq643" path="res://hexagons/river-intersectionB.tres" id="47_kn71g"]
+[ext_resource type="Resource" uid="uid://boaqblm10tej6" path="res://hexagons/river-intersectionC.tres" id="48_jfpc4"]
+[ext_resource type="Resource" uid="uid://bimrq5cmlbjc6" path="res://hexagons/river-intersectionD.tres" id="49_gdfem"]
+[ext_resource type="Resource" uid="uid://dqpyoj1rpo34i" path="res://hexagons/river-intersectionE.tres" id="50_cmrkm"]
+[ext_resource type="Resource" uid="uid://o16cccv5rucv" path="res://hexagons/river-intersectionF.tres" id="51_1gf74"]
+[ext_resource type="Resource" uid="uid://bgex1wp6541sr" path="res://hexagons/river-intersectionG.tres" id="52_rg3ty"]
+[ext_resource type="Resource" uid="uid://cjqs3xmg4coqp" path="res://hexagons/river-intersectionH.tres" id="53_ul0tn"]
+[ext_resource type="Resource" uid="uid://b2umunruhgyba" path="res://hexagons/river-start.tres" id="54_n6hqs"]
+[ext_resource type="Resource" uid="uid://b7xea2ulgsx6a" path="res://hexagons/river-straight.tres" id="55_c77vu"]
+[ext_resource type="Resource" uid="uid://dpqv2s3mnjhnw" path="res://hexagons/sand-desert.tres" id="56_2ieis"]
+[ext_resource type="Resource" uid="uid://cv3pfmap2i438" path="res://hexagons/sand-rocks.tres" id="57_ihtme"]
+[ext_resource type="Resource" uid="uid://brwa0g76vqgs3" path="res://hexagons/sand.tres" id="58_6hf6v"]
+[ext_resource type="Resource" uid="uid://d2ue6eko46a7m" path="res://hexagons/stone-hill.tres" id="59_4vbxi"]
+[ext_resource type="Resource" uid="uid://b43f6lscw6ypb" path="res://hexagons/stone-mountain.tres" id="60_50ljh"]
+[ext_resource type="Resource" uid="uid://cmikqsln6sr5l" path="res://hexagons/stone-rocks.tres" id="61_pt3p0"]
+[ext_resource type="Resource" uid="uid://bgt8l4yvd775k" path="res://hexagons/stone.tres" id="62_vumrd"]
+[ext_resource type="Resource" uid="uid://cgni3bonf5h6h" path="res://hexagons/unit-house.tres" id="63_oldib"]
+[ext_resource type="Resource" uid="uid://cnrih18yqygll" path="res://hexagons/unit-mansion.tres" id="64_xnldw"]
+[ext_resource type="Resource" uid="uid://caykmw6w6byx0" path="res://hexagons/unit-mill.tres" id="65_brhrr"]
+[ext_resource type="Resource" uid="uid://jmo5f0thoi8j" path="res://hexagons/unit-ship-large.tres" id="66_3titx"]
+[ext_resource type="Resource" uid="uid://dt42adeqyjspe" path="res://hexagons/unit-ship.tres" id="67_t2b2t"]
+[ext_resource type="Resource" uid="uid://gidhy3igb4vd" path="res://hexagons/unit-tower.tres" id="68_i6gj2"]
+[ext_resource type="Resource" uid="uid://cy2jy2dl1gy56" path="res://hexagons/unit-tree.tres" id="69_ewpsc"]
+[ext_resource type="Resource" uid="uid://doepobj4mmss5" path="res://hexagons/unit-wall-tower.tres" id="70_igxho"]
+[ext_resource type="Resource" uid="uid://c4hoea55oykxv" path="res://hexagons/water-island.tres" id="71_7dyyk"]
+[ext_resource type="Resource" uid="uid://c1gvq5eghnhxg" path="res://hexagons/water-rocks.tres" id="72_0plf3"]
+[ext_resource type="Resource" uid="uid://6fhxn7h8gupk" path="res://hexagons/water.tres" id="73_xaryk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q176i"]
 font = ExtResource("16_vlub6")
@@ -15,14 +86,15 @@ shadow_color = Color(0, 0, 0, 0.392157)
 
 [node name="Main" type="Node3D"]
 
-[node name="Builder" type="Node3D" parent="." node_paths=PackedStringArray("selector", "selector_container", "view_camera", "gridmap", "cash_display")]
+[node name="Builder" type="Node3D" parent="." node_paths=PackedStringArray("selector", "selector_container", "view_camera", "gridmap", "cash_display", "debug_text")]
 script = ExtResource("1_jybm7")
-hexagons = Array[Resource("res://scripts/hexagon.gd")]([ExtResource("2_vpugm")])
+hexagons = Array[Resource("res://scripts/hexagon.gd")]([ExtResource("2_3m4xx"), ExtResource("3_msq0m"), ExtResource("4_gyy8y"), ExtResource("5_nhtrm"), ExtResource("6_s8ib6"), ExtResource("7_pmi1m"), ExtResource("8_xgkqv"), ExtResource("9_ixuef"), ExtResource("10_k2tcn"), ExtResource("11_suvwl"), ExtResource("12_2ebk7"), ExtResource("13_ij0be"), ExtResource("14_ptuy6"), ExtResource("15_cxari"), ExtResource("16_5vnb2"), ExtResource("17_lb3th"), ExtResource("18_4fn8h"), ExtResource("19_bnq86"), ExtResource("20_lpo1t"), ExtResource("21_iq6gm"), ExtResource("22_pf811"), ExtResource("23_1dsdf"), ExtResource("24_cdtjd"), ExtResource("25_spsks"), ExtResource("26_yxpg1"), ExtResource("27_3hxdp"), ExtResource("28_gg4bj"), ExtResource("29_ivkrg"), ExtResource("30_milmr"), ExtResource("31_6m0sm"), ExtResource("32_3ufr6"), ExtResource("33_mjsu7"), ExtResource("34_t7ujs"), ExtResource("35_7qbbj"), ExtResource("36_srdni"), ExtResource("37_b18wa"), ExtResource("38_gyw2a"), ExtResource("39_jtrlo"), ExtResource("40_ivhfi"), ExtResource("41_7nddh"), ExtResource("42_ew4qa"), ExtResource("43_3a2u5"), ExtResource("44_typ5n"), ExtResource("45_lck8o"), ExtResource("46_qcvyf"), ExtResource("47_kn71g"), ExtResource("48_jfpc4"), ExtResource("49_gdfem"), ExtResource("50_cmrkm"), ExtResource("51_1gf74"), ExtResource("52_rg3ty"), ExtResource("53_ul0tn"), ExtResource("54_n6hqs"), ExtResource("55_c77vu"), ExtResource("56_2ieis"), ExtResource("57_ihtme"), ExtResource("58_6hf6v"), ExtResource("59_4vbxi"), ExtResource("60_50ljh"), ExtResource("61_pt3p0"), ExtResource("62_vumrd"), ExtResource("63_oldib"), ExtResource("64_xnldw"), ExtResource("65_brhrr"), ExtResource("66_3titx"), ExtResource("67_t2b2t"), ExtResource("68_i6gj2"), ExtResource("69_ewpsc"), ExtResource("70_igxho"), ExtResource("71_7dyyk"), ExtResource("72_0plf3"), ExtResource("73_xaryk")])
 selector = NodePath("Selector")
 selector_container = NodePath("Selector/Container")
 view_camera = NodePath("../View/Camera")
 gridmap = NodePath("../GridMap")
 cash_display = NodePath("../CanvasLayer/Control/Cash")
+debug_text = NodePath("../CanvasLayer/Control/Debug")
 
 [node name="Selector" type="Node3D" parent="Builder"]
 
@@ -59,6 +131,14 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Debug" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 130.0
+offset_right = 227.0
+offset_bottom = 204.0
+label_settings = SubResource("LabelSettings_q176i")
 
 [node name="CashIcon" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
