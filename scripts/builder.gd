@@ -4,16 +4,20 @@ extends Node3D
 
 var map:DataMap
 
-var index:int = 0 # Index of structure being built
+var index:int = 0 # Index of hexagon being placed
 
 @export var selector:Node3D # The 'cursor'
-@export var selector_container:Node3D # Node that holds a preview of the structure
+@export var selector_container:Node3D # Node that holds a preview of the hexagon
+@export var hexagons_container:Node3D # Node that holds the placed hexagons
 @export var view_camera:Camera3D # Used for raycasting mouse
 @export var gridmap:GridMap
+var HexGrid = preload("res://scripts/godot-gdhexgrid/HexGrid.gd").new() # TODO - fix so it can export
 @export var cash_display:Label
 @export var debug_text:Label
 
 var plane:Plane # Used for raycasting mouse
+var mesh_library:MeshLibrary
+var selector_rotation = 90
 
 func _ready():
 	
@@ -21,9 +25,7 @@ func _ready():
 	plane = Plane(Vector3.UP, Vector3.ZERO)
 	
 	# Create new MeshLibrary dynamically, can also be done in the editor
-	# See: https://docs.godotengine.org/en/stable/tutorials/3d/using_gridmaps.html
-	
-	var mesh_library = MeshLibrary.new()
+	mesh_library = MeshLibrary.new()
 	
 	for hexagon in hexagons:
 		
@@ -32,33 +34,33 @@ func _ready():
 		mesh_library.create_item(id)
 		mesh_library.set_item_mesh(id, get_mesh(hexagon.model))
 		mesh_library.set_item_mesh_transform(id, Transform3D())
-		
-	gridmap.mesh_library = mesh_library
 	
-	update_structure()
+	update_hexagon()
 	update_cash()
 
 func _process(delta):
 	
 	# Controls
 	
-	action_rotate() # Rotates selection 90 degrees
+	action_rotate() # Rotates selection 60 degrees
 	action_structure_toggle() # Toggles between structures
 	
 	action_save() # Saving
 	action_load() # Loading
 	
 	# Map position based on mouse
-	
 	var world_position = plane.intersects_ray(
 		view_camera.project_ray_origin(get_viewport().get_mouse_position()),
 		view_camera.project_ray_normal(get_viewport().get_mouse_position()))
 
-	var gridmap_position = Vector3(round(world_position.x), 0, round(world_position.z))
-	selector.position = lerp(selector.position, gridmap_position, delta * 40)
+	world_position = Vector2(world_position.x, world_position.z)
 	
-	action_build(gridmap_position)
-	action_demolish(gridmap_position)
+	var plane_pos = HexGrid.get_hex_center3(HexGrid.get_hex_at(world_position))
+	selector.position.x = plane_pos.x
+	selector.position.z = plane_pos.z
+
+	action_build(plane_pos)
+	action_demolish(plane_pos)
 
 # Retrieve the mesh from a PackedScene, used for dynamically creating a MeshLibrary
 
@@ -75,27 +77,64 @@ func get_mesh(packed_scene):
 
 # Build (place) a structure
 
-func action_build(gridmap_position):
+func action_build(hexgrid_position):
 	if Input.is_action_just_pressed("build"):
 		
-		var previous_tile = gridmap.get_cell_item(gridmap_position)
-		gridmap.set_cell_item(gridmap_position, index, gridmap.get_orthogonal_index_from_basis(selector.basis))
+		var str_pos = get_node_string(hexgrid_position)
+
+		# Check in the hexagons_container if there is a node with the name str_pos
+		# If there is, remove it
+		if hexagons_container.has_node(str_pos):
+			var node = hexagons_container.get_node(str_pos)
+			hexagons_container.remove_child(node)
+			node.queue_free()
+		#else:
+		create_hexagon(hexgrid_position)
 		
-		if previous_tile != index:
-			map.cash -= hexagons[index].price
-			update_cash()
+		#if previous_tile != index:
+			#map.cash -= hexagons[index].price
+			#update_cash()
+
+func get_node_string(hexgrid_position):
+	# Cast the hexgrid_position to a string
+	var str_pos = str(HexGrid.get_hex_at(hexgrid_position).get_cube_coords())
+
+	# Clean up the string
+	str_pos = str_pos.replace("(", "")
+	str_pos = str_pos.replace(")", "")
+	str_pos = str_pos.replace(" ", "")
+	str_pos = str_pos.replace(",", "_")
+	str_pos = str_pos.replace(".", "dot")
+	
+	print(str_pos)
+	
+	return str_pos
+
+func create_hexagon(hexgrid_position):
+	var str_pos = get_node_string(hexgrid_position)
+	
+	# If there isn't, create a new node with the name str_pos
+	var _model = hexagons[index].model.instantiate()
+	hexagons_container.add_child(_model)
+	_model.position = Vector3(hexgrid_position.x, 0, hexgrid_position.z)
+	_model.rotation_degrees = Vector3(0, selector_rotation, 0)
+	_model.scale = Vector3(1, 1, 1)
+	_model.set_name(str_pos)
+	_model.set("mesh", get_mesh(hexagons[index].model))
+	#_model.set_meta("savedata", )
 
 # Demolish (remove) a structure
 
-func action_demolish(gridmap_position):
+func action_demolish(hexgrid_position):
 	if Input.is_action_just_pressed("demolish"):
-		gridmap.set_cell_item(gridmap_position, -1)
+		gridmap.set_cell_item(hexgrid_position, -1)
 
-# Rotates the 'cursor' 90 degrees
+# Rotates the 'cursor' 60 degrees
 
 func action_rotate():
 	if Input.is_action_just_pressed("rotate"):
-		selector.rotate_y(deg_to_rad(90))
+		selector.get_node("Container").rotate_y(deg_to_rad(60))
+		selector_rotation = (selector_rotation + 60) % 360
 
 # Toggle between structures to build
 
@@ -106,11 +145,11 @@ func action_structure_toggle():
 	if Input.is_action_just_pressed("structure_previous"):
 		index = wrap(index - 1, 0, hexagons.size())
 
-	update_structure()
+	update_hexagon()
 
 # Update the structure visual in the 'cursor'
 
-func update_structure():
+func update_hexagon():
 	# Clear previous structure preview in selector
 	for n in selector_container.get_children():
 		selector_container.remove_child(n)

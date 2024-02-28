@@ -86,17 +86,19 @@ shadow_color = Color(0, 0, 0, 0.392157)
 
 [node name="Main" type="Node3D"]
 
-[node name="Builder" type="Node3D" parent="." node_paths=PackedStringArray("selector", "selector_container", "view_camera", "gridmap", "cash_display", "debug_text")]
+[node name="Builder" type="Node3D" parent="." node_paths=PackedStringArray("selector", "selector_container", "hexagons_container", "view_camera", "gridmap", "cash_display", "debug_text")]
 script = ExtResource("1_jybm7")
 hexagons = Array[Resource("res://scripts/hexagon.gd")]([ExtResource("2_3m4xx"), ExtResource("3_msq0m"), ExtResource("4_gyy8y"), ExtResource("5_nhtrm"), ExtResource("6_s8ib6"), ExtResource("7_pmi1m"), ExtResource("8_xgkqv"), ExtResource("9_ixuef"), ExtResource("10_k2tcn"), ExtResource("11_suvwl"), ExtResource("12_2ebk7"), ExtResource("13_ij0be"), ExtResource("14_ptuy6"), ExtResource("15_cxari"), ExtResource("16_5vnb2"), ExtResource("17_lb3th"), ExtResource("18_4fn8h"), ExtResource("19_bnq86"), ExtResource("20_lpo1t"), ExtResource("21_iq6gm"), ExtResource("22_pf811"), ExtResource("23_1dsdf"), ExtResource("24_cdtjd"), ExtResource("25_spsks"), ExtResource("26_yxpg1"), ExtResource("27_3hxdp"), ExtResource("28_gg4bj"), ExtResource("29_ivkrg"), ExtResource("30_milmr"), ExtResource("31_6m0sm"), ExtResource("32_3ufr6"), ExtResource("33_mjsu7"), ExtResource("34_t7ujs"), ExtResource("35_7qbbj"), ExtResource("36_srdni"), ExtResource("37_b18wa"), ExtResource("38_gyw2a"), ExtResource("39_jtrlo"), ExtResource("40_ivhfi"), ExtResource("41_7nddh"), ExtResource("42_ew4qa"), ExtResource("43_3a2u5"), ExtResource("44_typ5n"), ExtResource("45_lck8o"), ExtResource("46_qcvyf"), ExtResource("47_kn71g"), ExtResource("48_jfpc4"), ExtResource("49_gdfem"), ExtResource("50_cmrkm"), ExtResource("51_1gf74"), ExtResource("52_rg3ty"), ExtResource("53_ul0tn"), ExtResource("54_n6hqs"), ExtResource("55_c77vu"), ExtResource("56_2ieis"), ExtResource("57_ihtme"), ExtResource("58_6hf6v"), ExtResource("59_4vbxi"), ExtResource("60_50ljh"), ExtResource("61_pt3p0"), ExtResource("62_vumrd"), ExtResource("63_oldib"), ExtResource("64_xnldw"), ExtResource("65_brhrr"), ExtResource("66_3titx"), ExtResource("67_t2b2t"), ExtResource("68_i6gj2"), ExtResource("69_ewpsc"), ExtResource("70_igxho"), ExtResource("71_7dyyk"), ExtResource("72_0plf3"), ExtResource("73_xaryk")])
 selector = NodePath("Selector")
 selector_container = NodePath("Selector/Container")
+hexagons_container = NodePath("../Hexagons")
 view_camera = NodePath("../View/Camera")
 gridmap = NodePath("../GridMap")
 cash_display = NodePath("../CanvasLayer/Control/Cash")
 debug_text = NodePath("../CanvasLayer/Control/Debug")
 
 [node name="Selector" type="Node3D" parent="Builder"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Sprite" type="Sprite3D" parent="Builder/Selector"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.06, 0)
@@ -111,7 +113,7 @@ script = ExtResource("8_yovpv")
 [node name="Camera" type="Camera3D" parent="View"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
 environment = ExtResource("1_yndf3")
-fov = 20.0
+fov = 10.0
 
 [node name="GridMap" type="GridMap" parent="."]
 cell_size = Vector3(1, 1, 1)
@@ -157,3 +159,5 @@ offset_right = 270.0
 offset_bottom = 101.0
 text = "$10,000"
 label_settings = SubResource("LabelSettings_q176i")
+
+[node name="Hexagons" type="Node3D" parent="."]
