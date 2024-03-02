@@ -81,19 +81,21 @@ func action_build(hexgrid_position):
 	if Input.is_action_just_pressed("build"):
 		
 		var str_pos = get_node_string(hexgrid_position)
+		
+		var previous_hexagon = null
 
 		# Check in the hexagons_container if there is a node with the name str_pos
 		# If there is, remove it
 		if hexagons_container.has_node(str_pos):
-			var node = hexagons_container.get_node(str_pos)
-			hexagons_container.remove_child(node)
-			node.queue_free()
-		#else:
+			previous_hexagon = hexagons_container.get_node(str_pos)
+			hexagons_container.remove_child(previous_hexagon)
+			previous_hexagon.queue_free()
+			
 		create_hexagon(hexgrid_position)
 		
-		#if previous_tile != index:
-			#map.cash -= hexagons[index].price
-			#update_cash()
+		if previous_hexagon && previous_hexagon.get_meta("index") != index || !previous_hexagon:
+			map.cash -= hexagons[index].price
+			update_cash()
 
 func get_node_string(hexgrid_position):
 	# Cast the hexgrid_position to a string
@@ -121,7 +123,7 @@ func create_hexagon(hexgrid_position):
 	_model.scale = Vector3(1, 1, 1)
 	_model.set_name(str_pos)
 	_model.set("mesh", get_mesh(hexagons[index].model))
-	#_model.set_meta("savedata", )
+	_model.set_meta("index", index)
 
 # Demolish (remove) a structure
 
@@ -170,14 +172,18 @@ func action_save():
 	if Input.is_action_just_pressed("save"):
 		print("Saving map...")
 		
+		# Get all the nodes in the hexagons_container
+		# Save the position, rotation and model of each node
+		var hexagons = hexagons_container.get_children()
+
 		map.structures.clear()
-		for cell in gridmap.get_used_cells():
+		for hex in  hexagons_container.get_children():
 			
 			var data_structure:DataStructure = DataStructure.new()
 			
-			data_structure.position = Vector2i(cell.x, cell.z)
-			data_structure.orientation = gridmap.get_cell_item_orientation(cell)
-			data_structure.structure = gridmap.get_cell_item(cell)
+			data_structure.position = Vector3(hex.position.x, 0, hex.position.z)
+			data_structure.orientation = hex.rotation_degrees.y
+			data_structure.structure = hex.get_meta("index")
 			
 			map.structures.append(data_structure)
 			
@@ -187,12 +193,17 @@ func action_load():
 	if Input.is_action_just_pressed("load"):
 		print("Loading map...")
 		
-		gridmap.clear()
+		# Remove all hexagons from the hexagons_container
+		for hex in hexagons_container.get_children():
+			hexagons_container.remove_child(hex)
+			hex.queue_free()
 		
 		map = ResourceLoader.load("user://map.res")
 		if not map:
 			map = DataMap.new()
-		for cell in map.structures:
-			gridmap.set_cell_item(Vector3i(cell.position.x, 0, cell.position.y), cell.structure, cell.orientation)
+		for hex in map.structures:
+			index = hex.structure
+			selector_rotation = hex.orientation
+			create_hexagon(hex.position)
 			
 		update_cash()
